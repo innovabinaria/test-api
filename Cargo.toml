@@ -1,0 +1,10 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+authors = ["Victor Aguayo <vaguayos[at]hotmail.com>"]
+edition = "2018"
+
+[dependencies]
+hyper = "0.14"
+tokio = { version = "1.17", features = ["full"] }
+routerify = "3.0"
