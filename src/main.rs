@@ -6,6 +6,10 @@ async fn home_handler(_: Request<Body>) -> Result<Response<Body>, Infallible> {
     Ok(Response::new(Body::from("Hello world!")))
 }
 
+async fn get_name_handler(_: Request<Body>) -> Result<Response<Body>, Infallible> {
+    Ok(Response::new(Body::from("Name: Victor Aguayo")))
+}
+
 async fn error_handler(err: routerify::RouteError, _: RequestInfo) -> Response<Body> {
     eprintln!("{}", err);
     Response::builder()
@@ -17,6 +21,7 @@ async fn error_handler(err: routerify::RouteError, _: RequestInfo) -> Response<B
 fn router() -> Router<Body, Infallible> {
     Router::builder()
         .get("/", home_handler)
+        .get("/name", get_name_handler)  // Nueva ruta para "/nombre"
         .err_handler_with_info(error_handler)
         .build()
         .unwrap()
